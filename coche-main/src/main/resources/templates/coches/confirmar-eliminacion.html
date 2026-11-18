@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::main})}">
+<head>
+    <title>Confirmar eliminación</title>
+</head>
+<body>
+<main>
+    <h1 class="h3 mb-4">Confirmar eliminación</h1>
+
+    <p>
+        ¿Seguro que deseas eliminar el coche
+        <strong th:text="${coche.marca + ' ' + coche.modelo}"></strong>
+        con matrícula <strong th:text="${coche.matricula}"></strong>?
+    </p>
+
+    <form method="post" th:action="@{/coches/eliminar/{id}(id=${coche.id})}" class="d-inline">
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    </form>
+    <a class="btn btn-outline-secondary" th:href="@{/coches}">Cancelar</a>
+</main>
+</body>
+</html>
